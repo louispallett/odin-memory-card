@@ -1,4 +1,4 @@
-import { api_key } from "../hidden_variables";
+import { api_key } from "./hidden_variables";
 
 export { apiData };
 
