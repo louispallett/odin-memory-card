@@ -4,3 +4,5 @@ src/assets
 
 *.json
 *.config.js
+
+src/js/hidden_variables.js
