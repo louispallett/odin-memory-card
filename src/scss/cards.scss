@@ -1,0 +1,48 @@
+@use "fonts";
+
+.cards-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+}
+
+.card {
+    display: grid;
+    grid-template-rows: .75fr 3fr 1.25fr;
+    border: 5px solid white;
+    border-radius: 10px;
+    background-color: #8ab661;
+    max-width: 300px;
+    height: 400px;
+}
+
+.card-alias > p,
+.card-name > p {
+    text-align: center;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.card-alias > p {
+    font-style: italic;
+    font-size: 1.3rem;
+}
+
+.card-name {
+    margin: 0 5px;
+}
+
+.card-name > p {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.card-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 0%;
+    border-radius: 5px;
+    margin: 5px;
+}

@@ -3,8 +3,11 @@ import { apiData } from "../scripts/api_data";
 
 export default function Cards() {
     return (
-        <div>
+        <div className="cards-wrapper">
             {/* TEMPORARY */}
+            <MemoryCard data={apiData[12]} />
+            <MemoryCard data={apiData[11]} />
+            <MemoryCard data={apiData[1]} />
             <MemoryCard data={apiData[0]} />
             {/* TEMPORARY */}
         </div>
@@ -13,13 +16,15 @@ export default function Cards() {
 
 function MemoryCard({ data }) {
     return (
-        <div className="card-wrapper">
-            <div className="character-name">
-                <p>{data.name}</p>
-            </div>
-            <img src={data.image} />
-            <div className="alias">
+        <div className="card">
+            <div className="card-alias">
                 <p>{data.alias}</p>
+            </div>
+            <div className="card-image"
+                style={{ backgroundImage: `url(${data.image})` }}
+            ></div>
+            <div className="card-name">
+                <p>{data.name}</p>
             </div>
         </div>
     )
