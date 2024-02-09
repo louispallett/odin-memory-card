@@ -4,12 +4,9 @@ import { apiData } from "../scripts/api_data";
 export default function Cards() {
     return (
         <div className="cards-wrapper">
-            {/* TEMPORARY */}
-            <MemoryCard data={apiData[12]} />
-            <MemoryCard data={apiData[11]} />
-            <MemoryCard data={apiData[1]} />
-            <MemoryCard data={apiData[0]} />
-            {/* TEMPORARY */}
+            {apiData.map((data, index) => (
+                <MemoryCard key={index} data={data} />
+            ))}
         </div>
     )
 }
