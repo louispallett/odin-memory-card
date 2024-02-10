@@ -6,7 +6,8 @@ $card-height: 300px;
 .cards-wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax($card-width, 1fr));
-    gap: 10px;
+    gap: 20px 10px;
+    margin: 0 20px;
 }
 
 .card {
