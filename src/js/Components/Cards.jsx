@@ -2,9 +2,21 @@ import { useState, useEffect } from "react";
 import { apiData } from "../scripts/api_data";
 
 export default function Cards() {
+
+    const shuffleCards = (array) => {
+        const shuffledArray = [...array];
+        for (let i = shuffledArray.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+        }
+        return shuffledArray;
+    }
+
+    const shuffledArray = shuffleCards(apiData);
+
     return (
         <div className="cards-wrapper">
-            {apiData.map((data, index) => (
+            {shuffledArray.map((data, index) => (
                 <MemoryCard key={index} data={data} />
             ))}
         </div>
