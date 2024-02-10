@@ -1,6 +1,11 @@
 @use "header";
 @use "cards";
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -40,41 +45,23 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+#root {
+  max-width: 1600px;
+  flex: 1 auto;
 }
-
-.body {
-  display: grid;
-  // justify-content: center;
-  grid-template-rows: 200px 1fr 100px;
-  margin: 0;
-  // min-width: 320px;
-  width: 100vw;
-}
-
 
 .main {
   display: flex;
-  margin: 20px;
-  max-width: 1500px;
   justify-content: center;
-  flex-direction: column;
+  margin: 50px 0;
 }
