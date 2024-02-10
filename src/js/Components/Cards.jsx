@@ -16,25 +16,19 @@ export default function Cards() {
 
     return (
         <div className="cards-wrapper">
-            {shuffledArray.map((data, index) => (
-                <MemoryCard key={index} data={data} />
+            {shuffledArray.map((apiData, index) => (
+                <div className="card" key={apiData.key}>
+                    <div className="card-alias">
+                        <p>{apiData.alias}</p>
+                    </div>
+                    <div className="card-image"
+                        style={{ backgroundImage: `url(${apiData.image})` }}
+                    ></div>
+                    <div className="card-name">
+                        <p>{apiData.name}</p>
+                    </div>
+                </div>
             ))}
-        </div>
-    )
-}
-
-function MemoryCard({ data }) {
-    return (
-        <div className="card">
-            <div className="card-alias">
-                <p>{data.alias}</p>
-            </div>
-            <div className="card-image"
-                style={{ backgroundImage: `url(${data.image})` }}
-            ></div>
-            <div className="card-name">
-                <p>{data.name}</p>
-            </div>
         </div>
     )
 }
