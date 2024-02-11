@@ -1,6 +1,15 @@
 import { useState, useEffect } from "react";
 import { apiData } from "../scripts/api_data";
 
+let highScore = 0;
+let currentScore = 0;
+
+const highScoreElement = document.querySelector(".high-score");
+const currentScoreElement = document.querySelector(".current-score");
+
+highScoreElement.textContent = `High Score: ${highScore}`;
+currentScoreElement.textContent = `Current Score: ${currentScore}`;
+
 export default function Cards() {
     const [canPlay, setCanPlay] = useState(true);
 
