@@ -2,7 +2,11 @@ import { useState } from "react";
 
 export default function Scores() {
     let highScore = 0;
-    let currentScore = 0;
+    const [currentScore, setCurrentScore] = useState(0);
+
+    const incrementScore = () => {
+        setCurrentScore((currentScore) => currentScore + 1);
+    }
 
     return (
         <div className="scores">
