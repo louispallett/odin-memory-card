@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { apiData } from "../scripts/api_data";
 
 let highScore = 0;
@@ -11,60 +11,39 @@ highScoreElement.textContent = `High Score: ${highScore}`;
 currentScoreElement.textContent = `Current Score: ${currentScore}`;
 
 export default function Cards() {
-    const [canPlay, setCanPlay] = useState(true);
-
-    const selectedCards = [];
+    const [shuffledArray, setShuffledArray] = useState([]);
 
     const shuffleCards = (array) => {
-        const shuffledArray = [...array];
-        for (let i = shuffledArray.length - 1; i > 0; i--) {
+        const cards = [...array];
+        for (let i = cards.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+            [cards[i], cards[j]] = [cards[j], cards[i]];
         }
-        return shuffledArray;
+        return cards;
     }
 
-    const handleClick = ({ data }) => {
-        for (let i = 0; i < selectedCards.length; i++) {
-            if  (data.key == selectedCards[i]) {
-                highScore = selectedCards.length;
-                // Because canPlay is changing state, the component here re renders:
-                    // We do want it to do this, but we also want the cards to shuffle onClick...
-                setCanPlay(false);
-                break;
-            }
-        }
-
-        if (canPlay) {
-            selectedCards.push(data.key);
-        }
-        
-        console.log(selectedCards);
-        console.log(canPlay);
-        console.log(selectedCards);
+    const handleClick = () => {
+        const newShuffledArray = shuffleCards(apiData);
+        setShuffledArray(newShuffledArray);
     }
 
     useEffect(() => {
-        
-        return () => {
-            
-        }
-    })
-
-    const shuffledArray = shuffleCards(apiData);
+        const initialShuffledArray = shuffleCards(apiData);
+        setShuffledArray(initialShuffledArray);
+    }, []);
 
     return (
         <div className="cards-wrapper">
-            {shuffledArray.map((apiData, index) => (
-                <div className="card" key={apiData.key} onClick={() => handleClick({ data: apiData })}>
+            {shuffledArray.map((data, index) => (
+                <div className="card" key={index} onClick={handleClick}>
                     <div className="card-alias">
-                        <p>{apiData.alias}</p>
+                        <p>{data.alias}</p>
                     </div>
                     <div className="card-image"
-                        style={{ backgroundImage: `url(${apiData.image})` }}
+                        style={{ backgroundImage: `url(${data.image})` }}
                     ></div>
                     <div className="card-name">
-                        <p>{apiData.name}</p>
+                        <p>{data.name}</p>
                     </div>
                 </div>
             ))}
