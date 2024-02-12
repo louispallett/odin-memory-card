@@ -10,10 +10,17 @@ export default function App() {
         setCurrentScore((currentScore) => currentScore + 1);
     }
 
+    const changeHighScore = () => {
+        if (highScore < currentScore) {
+            setHighScore(currentScore);
+        }
+        setCurrentScore(0);
+    }
+
     return (
         <div>
             <Scores currentScore={currentScore} highScore={highScore}/>
-            <Cards changeCurrentScore={changeCurrentScore} />
+            <Cards changeCurrentScore={changeCurrentScore} changeHighScore={changeHighScore} />
         </div>
     )
 }

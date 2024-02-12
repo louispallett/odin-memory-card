@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { apiData } from "../scripts/api_data";
 
-const selectedCards = [];
+let selectedCards = [];
 
 /*
 ==================================
@@ -42,6 +42,8 @@ export default function Cards({ changeCurrentScore, changeHighScore }) {
         for (let i = 0; i < selectedCards.length; i++) {
             if (selectedCards[i] == key.data) {
                 console.log("DUPLICATE");
+                changeHighScore();
+                selectedCards = [];
                 // Breaking from the loop here, as we don't need it to continue the loop once we find a duplicate!
                 // We also don't want the card to be added!
                 return;
