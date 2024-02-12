@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { apiData } from "../scripts/api_data";
 
+const selectedCards = [];
+
 /*
 ==================================
 Keeping Score
@@ -24,7 +26,7 @@ We now need to implement how to keep score. Firstly, this needs to be done via t
 
 */
 
-export default function Cards() {
+export default function Cards({ changeCurrentScore, changeHighScore }) {
     const [shuffledArray, setShuffledArray] = useState([]);
 
     const shuffleCards = (array) => {
@@ -36,9 +38,26 @@ export default function Cards() {
         return cards;
     }
 
-    const handleClick = () => {
+    const handleClick = (key) => {
+        for (let i = 0; i < selectedCards.length; i++) {
+            if (selectedCards[i] == key.data) {
+                console.log("DUPLICATE");
+                // Breaking from the loop here, as we don't need it to continue the loop once we find a duplicate!
+                // We also don't want the card to be added!
+                return;
+            }
+        }
+        // If play is legal
+        // Push key number to array
+        selectedCards.push(key.data);
+
+        // Update Current Score
+        changeCurrentScore();
+
+        // Shuffle the cards
         const newShuffledArray = shuffleCards(apiData);
         setShuffledArray(newShuffledArray);
+
     }
 
     useEffect(() => {
@@ -49,7 +68,7 @@ export default function Cards() {
     return (
         <div className="cards-wrapper">
             {shuffledArray.map((data, index) => (
-                <div className="card" key={index} onClick={handleClick}>
+                <div className="card" key={index} onClick={() => handleClick({data: data.key})}>
                     <div className="card-alias">
                         <p>{data.alias}</p>
                     </div>

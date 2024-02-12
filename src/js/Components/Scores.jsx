@@ -1,13 +1,4 @@
-import { useState } from "react";
-
-export default function Scores() {
-    let highScore = 0;
-    const [currentScore, setCurrentScore] = useState(0);
-
-    const incrementScore = () => {
-        setCurrentScore((currentScore) => currentScore + 1);
-    }
-
+export default function Scores({ highScore, currentScore }) {
     return (
         <div className="scores">
             <p className="high-score">High Score: {highScore}</p>
