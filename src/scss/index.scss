@@ -60,7 +60,14 @@ button:focus-visible {
   flex: 1 auto;
 }
 
-.main {
+main {
   display: flex;
   justify-content: center;
+}
+
+footer {
+  text-align: center;
+  font-size: .75rem;
+  margin-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.288);
 }
