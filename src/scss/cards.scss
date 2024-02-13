@@ -1,5 +1,3 @@
-@use "fonts";
-
 $card_width: 225px;
 $card_small_subtraction: 25px;
 $card_smallest_subtraction: 50px;
@@ -96,6 +94,7 @@ $card_font_smallest_subtraction: .4rem;
         grid-template-rows: .5fr 3fr 1.25fr;
         max-width: $card_width - $card_smallest_subtraction;
         height: $card_height - $card_smallest_subtraction;
+        border: 3px solid white;
     }
 
     .card-alias > p {
