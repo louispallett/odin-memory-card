@@ -1,11 +1,18 @@
 @use "fonts";
 
-$card-width: 225px;
-$card-height: 300px;
+$card_width: 225px;
+$card_small_subtraction: 25px;
+$card_smallest_subtraction: 50px;
+$card_height: 300px;
+
+$card_alias_font: 1.2rem;
+$card_name_font: 2.2rem;
+$card_font_subtraction: .2rem;
+$card_font_smallest_subtraction: .4rem;
 
 .cards-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax($card-width, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax($card_width, 1fr));
     gap: 20px 10px;
     margin: 0 20px;
 }
@@ -16,8 +23,8 @@ $card-height: 300px;
     border: 5px solid white;
     border-radius: 10px;
     background-color: #8ab661;
-    max-width: $card-width;
-    height: $card-height;
+    max-width: $card_width;
+    height: $card_height;
     &:hover {
         cursor: pointer;
         box-shadow: 0 0 40px #b8860b;
@@ -34,7 +41,7 @@ $card-height: 300px;
 
 .card-alias > p {
     font-style: italic;
-    font-size: 1rem;
+    font-size: $card_alias_font;
 }
 
 .card-name {
@@ -42,7 +49,7 @@ $card-height: 300px;
 }
 
 .card-name > p {
-    font-size: 2rem;
+    font-size: $card_name_font;
     line-height: 1;
 }
 
@@ -52,4 +59,50 @@ $card-height: 300px;
     background-position: 50% 0%;
     border-radius: 5px;
     margin: 5px;
+}
+
+@media only screen and (max-width: 740px) {
+    .cards-wrapper {
+        grid-template-columns: repeat(auto-fit, minmax($card_width - $card_small_subtraction, 1fr));
+        margin: 0;
+        gap: 5px 5px;
+    }
+
+    .card {
+        grid-template-rows: .5fr 3fr 1.25fr;
+        max-width: $card_width - $card_small_subtraction;
+        height: $card_height - $card_small_subtraction;
+    }
+
+    .card-alias > p {
+        font-size: $card_alias_font - $card_font_subtraction;
+    }
+
+    .card-image {
+        margin: 0;
+    }
+
+    .card-name > p {
+        font-size: $card_name_font - $card_font_subtraction;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .cards-wrapper {
+        grid-template-columns: repeat(auto-fit, minmax($card_width - $card_smallest_subtraction, 1fr));
+    }
+
+    .card {
+        grid-template-rows: .5fr 3fr 1.25fr;
+        max-width: $card_width - $card_smallest_subtraction;
+        height: $card_height - $card_smallest_subtraction;
+    }
+
+    .card-alias > p {
+        font-size: $card_alias_font - $card_font_smallest_subtraction;
+    }
+
+    .card-name > p {
+        font-size: $card_name_font - $card_font_smallest_subtraction;
+    }
 }
